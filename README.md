@@ -137,9 +137,14 @@ properties if a replacer array is specified.
   If white space is used, trailing commas will be used in objects and arrays.
 - `options`: An object with the following properties:
   - `replacer`: Same as the `replacer` parameter.
-  - `space`: Same as the `space` parameter.
+  - `space`: Same as the `space` parameter, except trailing commas may be omitted
+    by specifying `omitTrailingCommas`.
   - `quote`: A String representing the quote character to use when serializing
     strings.
+  - `omitTrailingCommas`: If true and the `space` setting is being used, do not
+    include trailing commas in objects or arrays.
+  - `singleLinePadding`: If true and the `space` setting is NOT used, include
+    a single space after braces, colons, array elements, and key-value pairs.
 
 #### Return value
 A JSON5 string representing the value.

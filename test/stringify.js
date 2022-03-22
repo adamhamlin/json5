@@ -337,4 +337,44 @@ describe('JSON5', () => {
             assert.strictEqual(JSON5.stringify({"a'": "1'"}, {quote: "'"}), "{'a\\'':'1\\''}")
         })
     })
+
+    describe('#stringify(value, {singleLinePadding})', () => {
+        it('single line output has whitespace padding', () => {
+            assert.strictEqual(JSON5.stringify({a: 1, b: {c: [1, 2]}}, {singleLinePadding: true}), '{ a: 1, b: { c: [1, 2] } }')
+        })
+
+        it('does not affect multi line output', () => {
+            assert.strictEqual(JSON5.stringify({a: 1, b: {c: [1, 2]}}, {space: 2, singleLinePadding: true}), [
+                '{',
+                '  a: 1,',
+                '  b: {',
+                '    c: [',
+                '      1,',
+                '      2,',
+                '    ],',
+                '  },',
+                '}',
+            ].join('\n'))
+        })
+    })
+
+    describe('#stringify(value, {omitTrailingCommas})', () => {
+        it('trailing commas are not used with multi line output', () => {
+            assert.strictEqual(JSON5.stringify({a: 1, b: {c: [1, 2]}}, {space: 2, omitTrailingCommas: true}), [
+                '{',
+                '  a: 1,',
+                '  b: {',
+                '    c: [',
+                '      1,',
+                '      2',
+                '    ]',
+                '  }',
+                '}',
+            ].join('\n'))
+        })
+
+        it('does not affect single line output', () => {
+            assert.strictEqual(JSON5.stringify({a: 1, b: {c: [1, 2]}}, {omitTrailingCommas: true}), '{a:1,b:{c:[1,2]}}')
+        })
+    })
 })
