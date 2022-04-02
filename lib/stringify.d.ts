@@ -20,7 +20,7 @@ declare type StringifyOptions = {
      * the string (or the first 10 characters of the string, if it's longer than
      * that) is used as white space. If this parameter is not provided (or is
      * null), no white space is used. If white space is used, trailing commas
-     * will be used in objects and arrays.
+     * will be used according to the omitTrailingCommas setting.
      */
     space?: string | number | null
 
@@ -29,6 +29,18 @@ declare type StringifyOptions = {
      * strings.
      */
     quote?: string | null
+
+    /**
+     * If true and white space is being used (see space setting), trailing commas
+     * will omitted in objects and arrays (Default: false).
+     */
+    omitTrailingCommas?: boolean
+
+    /**
+     * If true, spaces will be used after braces, property colons, array elements,
+     * and key-value pairs (Default: false).
+     */
+    singleLinePadding?: boolean
 }
 
 /**

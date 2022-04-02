@@ -478,5 +478,57 @@ t.test('JSON5', t => {
         t.end()
     })
 
+    t.test('#stringify(value, {singleLinePadding})', t => {
+        t.strictSame(
+            JSON5.stringify({a: 1, b: {c: [1, 2]}}, {singleLinePadding: true}),
+            '{ a: 1, b: { c: [1, 2] } }',
+            'single line output has whitespace padding'
+        )
+
+        t.strictSame(
+            JSON5.stringify({a: 1, b: {c: [1, 2]}}, {space: 2, singleLinePadding: true}),
+            [
+                '{',
+                '  a: 1,',
+                '  b: {',
+                '    c: [',
+                '      1,',
+                '      2,',
+                '    ],',
+                '  },',
+                '}',
+            ].join('\n'),
+            'does not affect multi line output'
+        )
+
+        t.end()
+    })
+
+    t.test('#stringify(value, {omitTrailingCommas})', t => {
+        t.strictSame(
+            JSON5.stringify({a: 1, b: {c: [1, 2]}}, {space: 2, omitTrailingCommas: true}),
+            [
+                '{',
+                '  a: 1,',
+                '  b: {',
+                '    c: [',
+                '      1,',
+                '      2',
+                '    ]',
+                '  }',
+                '}',
+            ].join('\n'),
+            'trailing commas are not used with multi line output'
+        )
+
+        t.strictSame(
+            JSON5.stringify({a: 1, b: {c: [1, 2]}}, {omitTrailingCommas: true}),
+            '{a:1,b:{c:[1,2]}}',
+            'does not affect single line output'
+        )
+
+        t.end()
+    })
+
     t.end()
 })
