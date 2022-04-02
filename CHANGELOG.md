@@ -1,3 +1,14 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.3.0](https://github.com/json5/json5/compare/v2.2.1...v2.3.0) (2022-04-02)
+
+
+### Features
+
+* Add new stringify options ([d33161c](https://github.com/json5/json5/commit/d33161cebcaa0cf4459ac851b9ed6f9fbbbfcefa))
+
 ### Unreleased [[code][c-unreleased], [diff][d-unreleased]]
 
 [c-unreleased]: https://github.com/json5/json5/tree/main
